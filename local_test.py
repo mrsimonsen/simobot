@@ -12,5 +12,6 @@ class MyClient(discord.Client):
             print('Message from {0.author}: {0.content)'.format(message))
 
 client = MyClient()
-token = os.environ.get("DISCORD_BOT_SECRET")
-client.run(token)
+token = os.environ.get('SECRET')
+print(token)
+#client.run(token)
