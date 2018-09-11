@@ -5,6 +5,8 @@ import discord
 import os
 import random
 
+#add method to make reminders to simonsen channel https://discordbots.org/bot/391890106736443393
+
 #command handler class
 #https://medium.com/bad-programming/making-a-cool-discord-bot-in-python-3-e6773add3c48
 class CommandHandler:
@@ -191,7 +193,7 @@ def join_team(message, client, args):
       'red':"Team Red"
     }
     try:
-      name = args[0].lower()      
+      name = args[0].lower()
       team = teams[name]
     except KeyError as e:
       print(e)
@@ -267,7 +269,7 @@ async def on_ready():
   global server
   for i in client.servers:
     server = i
-  
+
 
 #event handler on new message
 @client.event
