@@ -33,11 +33,13 @@ def help_command(message, client, args):
   cmd_triggers=[]
   for i in commands:
     cmd_triggers.append(i['trigger'])
-  if args not in cmd_triggers:
+  #skip the '!help' command part of the args and add a '!' to match the trigger
+  a = '!' + args[1]
+  if a not in cmd_triggers:
     return "That's not a SimoBot command"
   else:
-    i = cmd_triggers.index(args)
-    rep = '**{}**\n'.format(args)
+    i = cmd_triggers.index(a)
+    rep = '**{}**\n'.format(a)
     rep += '# of Arguments: {}\n'.format(commands[i]['args_num'])
     rep += 'Name of Arguments: {}\n'.format(commands[i]['args_name'])
     rep += 'Description: {}'.format(commands[i]['description'])
