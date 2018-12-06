@@ -26,20 +26,22 @@ commands.append(
 
 def help_command(message, client, args):
   '''displays information on how to use a command'''
-  #add a '!' to the beginning of the message
-  if args[0][0]!= '!':
+  #get rid of extra user stuff
+  if len(args)>1:
+    args = args[0]
+  else:
+    #add a '!' to the beginning of the message
+   if args[0]!= '!':
     args = '!'+args[0]
   #determine if message is in commands
   cmd_triggers=[]
   for i in commands:
     cmd_triggers.append(i['trigger'])
-  #skip the '!help' command part of the args and add a '!' to match the trigger
-  a = '!' + args[1]
-  if a not in cmd_triggers:
+  if args not in cmd_triggers:
     return "That's not a SimoBot command"
   else:
-    i = cmd_triggers.index(a)
-    rep = '**{}**\n'.format(a)
+    i = cmd_triggers.index(args)
+    rep = '**{}**\n'.format(args)
     rep += '# of Arguments: {}\n'.format(commands[i]['args_num'])
     rep += 'Name of Arguments: {}\n'.format(commands[i]['args_name'])
     rep += 'Description: {}'.format(commands[i]['description'])
@@ -231,6 +233,8 @@ async def on_message(message):
           await client.send_message(message.channel, str(command['function'](message, client, args)))
           break
         else:
+          #remove trigger from args
+          args = args[1:]
           if len(args) >= command['args_num']:
             await client.send_message(message.channel, str(command['function'](message, client, args)))
             break
