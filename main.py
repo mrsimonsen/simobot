@@ -191,6 +191,55 @@ commands.append(
   'args_name':[],
   'description':'Displays a list of teams'})
 
+def rps(message, client, args):
+  args = args[0]
+  rep = '<@{}> choice: {}\n'.format(message.author.id,args)
+  a = ('rock','paper','scissors')
+  if args not in a:
+    return "That's not a valid choice"
+  c = random.choice(a)
+  rep += 'Simobot chocie: {}\n'.format(c)
+  if c == 'rock':
+    if args == 'rock':
+      rep += ':necktie: Tie'
+    elif args == 'paper':
+      rep += 'You win'
+    elif args == 'scissors':
+      rep += 'I win'
+    else:
+      print(c, args)
+      return 'something went wrong in rock branch'
+  elif c == 'paper':
+    if args == 'rock':
+      rep += 'I win'
+    elif args == 'paper':
+      rep += ':necktie: Tie'
+    elif args == 'scissors':
+      rep += 'You win'
+    else:
+      print(c, args)
+      return 'something went wrong in paper branch'
+  elif c == 'scissors':
+    if args == 'rock':
+      rep += 'You win'
+    elif args == 'paper':
+      rep += 'I win'
+    elif args == 'scissors':
+      rep += ':necktie: Tie'
+    else:
+      print(c, args)
+      return 'something went wrong in paper branch'
+  else:
+    print(c, args)
+    return 'something went wrong with simobot choice branch'
+  return rep
+commands.append(
+  {'trigger':'!rps',
+  'function':rps,
+  'args_num':1,
+  'args_name':['rock, paper, or scissors'],
+  'description':'Play Rock Paper Scisscors with the bot'})
+
 
 ###client events
 #message from bot on joining server
