@@ -198,20 +198,20 @@ def rps(message, client, args):
   if args not in a:
     return "That's not a valid choice"
   c = random.choice(a)
-  rep += 'Simobot chocie: {}\n'.format(c)
+  rep += 'Simobot choice: {}\n'.format(c)
   if c == 'rock':
     if args == 'rock':
       rep += ':necktie: Tie'
     elif args == 'paper':
       rep += 'You win'
     elif args == 'scissors':
-      rep += 'I win'
+      rep += 'You loose'
     else:
       print(c, args)
       return 'something went wrong in rock branch'
   elif c == 'paper':
     if args == 'rock':
-      rep += 'I win'
+      rep += 'You loose'
     elif args == 'paper':
       rep += ':necktie: Tie'
     elif args == 'scissors':
@@ -223,7 +223,7 @@ def rps(message, client, args):
     if args == 'rock':
       rep += 'You win'
     elif args == 'paper':
-      rep += 'I win'
+      rep += 'You loose'
     elif args == 'scissors':
       rep += ':necktie: Tie'
     else:
@@ -239,6 +239,24 @@ commands.append(
   'args_num':1,
   'args_name':['rock, paper, or scissors'],
   'description':'Play Rock Paper Scisscors with the bot'})
+
+def dice(message, client, args):
+  n,d = args[0].split('d')
+  rep = '<@{}>\nRolled {} d{}\n'.format(message.author.id,n, d)
+  total = 0
+  for i in range(int(n)):
+    x = random.randint(1,int(d))
+    rep += '{}, '.format(x)
+    total += x
+  rep = rep[:-2]
+  rep += '\nTotal: {}'.format(total)
+  return rep
+commands.append(
+  {'trigger':'!roll',
+  'function':dice,
+  'args_num':1,
+  'args_name':["xdy"],
+  'description':"Rolls 'x'd'y' where x is the number of dice and y is the number of sides"})
 
 
 ###client events
