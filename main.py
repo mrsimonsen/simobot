@@ -18,7 +18,7 @@ def list_commands(message, client, args):
     count += 1
   return coms
 commands.append(
-  {'trigger':'!commands',
+  {'trigger':'!help',
   'function':list_commands,
   'args_num':0,
   'args_name': [''],
@@ -47,7 +47,7 @@ def help_command(message, client, args):
     rep += 'Description: {}'.format(commands[i]['description'])
     return rep
 commands.append(
-  {'trigger':'!help',
+  {'trigger':'!command',
   'function':help_command,
   'args_num':1,
   'args_name':['name of a command'],
