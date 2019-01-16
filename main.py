@@ -205,13 +205,13 @@ def rps(message, client, args):
     elif args == 'paper':
       rep += 'You win'
     elif args == 'scissors':
-      rep += 'You loose'
+      rep += 'You lose'
     else:
       print(c, args)
       return 'something went wrong in rock branch'
   elif c == 'paper':
     if args == 'rock':
-      rep += 'You loose'
+      rep += 'You lose'
     elif args == 'paper':
       rep += ':necktie: Tie'
     elif args == 'scissors':
@@ -223,7 +223,7 @@ def rps(message, client, args):
     if args == 'rock':
       rep += 'You win'
     elif args == 'paper':
-      rep += 'You loose'
+      rep += 'You lose'
     elif args == 'scissors':
       rep += ':necktie: Tie'
     else:
