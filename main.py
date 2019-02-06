@@ -193,42 +193,48 @@ commands.append(
 
 def rps(message, client, args):
   args = args[0]
-  rep = '<@{}> choice: {}\n'.format(message.author.id,args)
-  a = ('rock','paper','scissors')
-  if args not in a:
+  a = (':gem:',':newspaper:',':scissors:')
+  if args == 'rock':
+      args = ':gem:'
+  elif args == 'paper':
+    args = ':newspaper:'
+  elif args == 'scissors':
+    args = ':scissors:'
+  else:
     return "That's not a valid choice"
+  rep = '<@{}> choice: {}\n'.format(message.author.id,args)
   c = random.choice(a)
   rep += 'Simobot choice: {}\n'.format(c)
-  if c == 'rock':
-    if args == 'rock':
-      rep += ':necktie: Tie'
-    elif args == 'paper':
-      rep += 'You win'
-    elif args == 'scissors':
-      rep += 'You lose'
+  if c == ':gem:':
+    if args == ':gem:':
+      rep += ':necktie:'
+    elif args == ':newspaper:':
+      rep += ':sunglasses:'
+    elif args == ':scissors:':
+      rep += ':stuck_out_tongue_closed_eyes:'
     else:
       print(c, args)
       return 'something went wrong in rock branch'
-  elif c == 'paper':
-    if args == 'rock':
-      rep += 'You lose'
-    elif args == 'paper':
-      rep += ':necktie: Tie'
-    elif args == 'scissors':
-      rep += 'You win'
+  elif c == ':newspaper:':
+    if args == ':gem:':
+      rep += ':stuck_out_tongue_closed_eyes:'
+    elif args == ':newspaper:':
+      rep += ':necktie:'
+    elif args == ':scissors:':
+      rep += ':sunglasses:'
     else:
       print(c, args)
       return 'something went wrong in paper branch'
-  elif c == 'scissors':
-    if args == 'rock':
-      rep += 'You win'
-    elif args == 'paper':
-      rep += 'You lose'
-    elif args == 'scissors':
-      rep += ':necktie: Tie'
+  elif c == ':scissors:':
+    if args == ':gem:':
+      rep += ':sunglasses:'
+    elif args == ':newspaper:':
+      rep += ':stuck_out_tongue_closed_eyes:'
+    elif args == ':scissors:':
+      rep += ':necktie:'
     else:
       print(c, args)
-      return 'something went wrong in paper branch'
+      return 'something went wrong in scissors branch'
   else:
     print(c, args)
     return 'something went wrong with simobot choice branch'
