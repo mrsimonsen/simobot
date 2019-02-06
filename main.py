@@ -10,7 +10,7 @@ commands = []
 status = True
 ###build commands
 def list_commands(message, client, args):
-  '''list the commands this bot can do'''
+  '''displays additional information on how to use a command'''
   count = 1
   coms = '**Commands List**\n'
   for command in commands:
@@ -25,7 +25,7 @@ commands.append(
   'description':'Displays a list of commands'})
 
 def help_command(message, client, args):
-  '''displays information on how to use a command'''
+  '''displays all commands'''
   #get rid of extra user stuff
   if len(args)>1:
     args = args[0]
@@ -107,7 +107,7 @@ async def join_team(message, client, args):
   #check for valid team name
   name = args[0].lower()
   if name not in teams.keys():
-    return "That wasn't a team name\n'!help teamMe' to see teams you can join"
+    return "That wasn't a team name\n'!command teamMe' to see teams you can join"
   else:
     team = teams[name]
   #check to see if they already have a team
