@@ -111,10 +111,9 @@ async def join_team(message, client, args):
   else:
     team = teams[name]
   #check to see if they already have a team
-  for i in message.author.roles:
-    if 'team' in i.name.lower():
-      return "You're already on "+i+". You can only be on one team at a time."
-      break
+  for i in message.author.roles.name:
+    if 'team' in i.lower():
+      return "You're already on {}. You can only be on one team at a time.".format(i)
   #if they don't - join team
   role = discord.utils.get(message.server.roles, name=team)
   await client.add_roles(message.author, role)
